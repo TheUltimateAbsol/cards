@@ -1,52 +1,107 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfcgxtrx0scjg"]
+[gd_scene load_steps=20 format=3 uid="uid://bfcgxtrx0scjg"]
 
 [ext_resource type="Script" path="res://card.gd" id="1_lelgi"]
-[ext_resource type="Texture2D" uid="uid://ci3oe1cxekpe1" path="res://Game Assets/MngCardBG_Cmn_00.png" id="2_vl3n0"]
-[ext_resource type="Texture2D" uid="uid://6y6qsp7qrne1" path="res://minigame/card/BlasterShort00.png" id="3_knq40"]
+[ext_resource type="Texture2D" uid="uid://naana587ls5i" path="res://Game Assets/MngCardBG_Rre_00.png" id="2_pvihi"]
+[ext_resource type="Texture2D" uid="uid://dmihxrusl6cja" path="res://Game Assets/CardInk_00.png" id="3_4o83q"]
 [ext_resource type="FontFile" uid="uid://di0a4spwgh5a0" path="res://fonts/BlitzBold.otf" id="3_umn7l"]
+[ext_resource type="Texture2D" uid="uid://dmhcg2pc8ebcp" path="res://Game Assets/Ink_03s.png" id="4_gkypy"]
 [ext_resource type="Texture2D" uid="uid://dxe6vak4d1w80" path="res://Game Assets/GrdFreshText_01.png" id="5_nuypw"]
+[ext_resource type="Texture2D" uid="uid://cygsyaqpqc0mr" path="res://minigame/card/SpNiceBall.png" id="5_p2yns"]
 [ext_resource type="Texture2D" uid="uid://ba2vkc08bkxxk" path="res://Game Assets/GrdFreshText_00.png" id="5_sfp67"]
+[ext_resource type="Shader" path="res://gradient.gdshader" id="6_gm7u7"]
+[ext_resource type="Texture2D" uid="uid://b6dcqj8b4kvfh" path="res://Game Assets/CardFrame_00.png" id="7_fj3l6"]
+[ext_resource type="Texture2D" uid="uid://ciju2r4k1ya7m" path="res://Game Assets/CardFrame_02s.png" id="8_j5c46"]
+[ext_resource type="Texture2D" uid="uid://cqfcbovw24unv" path="res://Game Assets/CardFrame_01.png" id="8_wknjb"]
+[ext_resource type="Texture2D" uid="uid://biq205c5huwc4" path="res://Game Assets/CardCost_01.png" id="13_c4b37"]
+[ext_resource type="Texture2D" uid="uid://jirsc50r6813" path="res://Game Assets/GrdFresh_00.png" id="13_n6ekt"]
+[ext_resource type="Texture2D" uid="uid://x4mmoydx0jq4" path="res://Game Assets/GrdFresh_01.png" id="14_ocyyp"]
+[ext_resource type="Texture2D" uid="uid://d1qmhoh0e08wi" path="res://75-4.png" id="16_7ytgp"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0vm4g"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_24hnn"]
-blend_mode = 3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18bc3"]
+shader = ExtResource("6_gm7u7")
+shader_parameter/divide = 0.5
+shader_parameter/blur = 0.1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_asiap"]
 
+[sub_resource type="FontVariation" id="FontVariation_nino2"]
+base_font = ExtResource("3_umn7l")
+spacing_glyph = 8
+
 [node name="card" type="Node2D"]
 script = ExtResource("1_lelgi")
-id = 24
+id = 199
+metadata/_edit_horizontal_guides_ = []
+metadata/_edit_vertical_guides_ = [-251.0, 251.0]
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(256, 256)
-texture = ExtResource("2_vl3n0")
+[node name="Background" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -245.0
+offset_top = -343.0
+offset_right = 245.0
+offset_bottom = 347.0
+
+[node name="Background" type="Sprite2D" parent="Background"]
+position = Vector2(245, 343)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_pvihi")
+region_rect = Rect2(0, 0, 342.206, 458.606)
+
+[node name="CardInk00" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_4o83q")
+
+[node name="Ink03s" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.607843)
+scale = Vector2(1, 1.4)
+texture = ExtResource("4_gkypy")
+
+[node name="CardFrame00" type="Sprite2D" parent="."]
+scale = Vector2(1.162, 1.162)
+texture = ExtResource("7_fj3l6")
+
+[node name="CardFrame01" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_18bc3")
+position = Vector2(0, 279)
+scale = Vector2(1.162, 1.162)
+texture = ExtResource("8_wknjb")
+
+[node name="CardFrame02s" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.162, 1.162)
+texture = ExtResource("8_j5c46")
+
+[node name="CardFrame02" type="Sprite2D" parent="."]
+scale = Vector2(1.162, 1.162)
+texture = ExtResource("7_fj3l6")
 
 [node name="Character" type="Sprite2D" parent="."]
-position = Vector2(256, 256)
-texture = ExtResource("3_knq40")
+texture = ExtResource("5_p2yns")
 
-[node name="Name2" type="Label" parent="."]
+[node name="Name" type="Label" parent="."]
 light_mask = 2
 visibility_layer = 2
-material = SubResource("CanvasItemMaterial_0vm4g")
-offset_left = 31.0
-offset_top = 154.0
-offset_right = 364.0
-offset_bottom = 254.0
+offset_left = -257.0
+offset_top = -294.0
+offset_right = 259.0
+offset_bottom = -15.0
+pivot_offset = Vector2(258, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_constants/line_spacing = -44
 theme_override_fonts/font = ExtResource("3_umn7l")
 theme_override_font_sizes/font_size = 48
-text = "Sample Text"
+text = "Booyah Bomb"
 horizontal_alignment = 1
 
-[node name="CommonText" type="PointLight2D" parent="."]
+[node name="CommonText" type="PointLight2D" parent="Name"]
+visible = false
 light_mask = 2
 visibility_layer = 2
 texture_repeat = 2
-material = SubResource("CanvasItemMaterial_24hnn")
-position = Vector2(226, 270.5)
+position = Vector2(284, 88)
 scale = Vector2(931.111, 781.111)
 color = Color(0.372549, 0.219608, 1, 1)
 blend_mode = 2
@@ -54,40 +109,60 @@ range_item_cull_mask = 2
 texture = SubResource("PlaceholderTexture2D_asiap")
 texture_scale = 0.9
 
-[node name="RareText" type="PointLight2D" parent="."]
-visible = false
+[node name="RareText" type="PointLight2D" parent="Name"]
 light_mask = 2
 visibility_layer = 2
 texture_repeat = 2
-material = SubResource("CanvasItemMaterial_24hnn")
-position = Vector2(204, 212.663)
+position = Vector2(285, 45)
 scale = Vector2(8.65741, 2.88599)
 blend_mode = 2
 range_item_cull_mask = 2
 texture = ExtResource("5_nuypw")
 texture_scale = 0.9
 
-[node name="FreshText" type="PointLight2D" parent="."]
+[node name="FreshText" type="PointLight2D" parent="Name"]
 visible = false
 light_mask = 2
 visibility_layer = 2
 texture_repeat = 2
-material = SubResource("CanvasItemMaterial_24hnn")
-position = Vector2(199, 208)
-scale = Vector2(7.77083, 1.91667)
+position = Vector2(258, 48)
+scale = Vector2(8.67708, 1.97685)
 blend_mode = 2
 range_item_cull_mask = 2
 texture = ExtResource("5_sfp67")
 texture_scale = 0.9
 
-[node name="Name" type="Label" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0.372549, 0.219608, 1, 1)
+[node name="CardCost" type="Sprite2D" parent="."]
+position = Vector2(-186, 287.5)
+rotation = -0.785398
+scale = Vector2(1.08, 1.08)
+texture = ExtResource("13_c4b37")
+
+[node name="Cost" type="Label" parent="."]
+offset_left = -229.0
+offset_top = 239.0
+offset_right = -139.0
+offset_bottom = 336.0
+pivot_offset = Vector2(258, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_umn7l")
-theme_override_font_sizes/font_size = 48
-text = "Luna Blaster"
+theme_override_constants/outline_size = 8
+theme_override_constants/line_spacing = -44
+theme_override_fonts/font = SubResource("FontVariation_nino2")
+theme_override_font_sizes/font_size = 38
+text = "12"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GrdFresh00" type="Sprite2D" parent="."]
+position = Vector2(-460, -210)
+texture = ExtResource("13_n6ekt")
+
+[node name="GrdFresh01" type="Sprite2D" parent="."]
+position = Vector2(-579, -209)
+texture = ExtResource("14_ocyyp")
+
+[node name="75-4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2.98023e-08, 2.27374e-13)
+scale = Vector2(0.808268, 0.808268)
+texture = ExtResource("16_7ytgp")

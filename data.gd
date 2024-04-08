@@ -35,6 +35,12 @@ func get_card_data(id):
 		id = 0
 	return card_data.data[id]
 
+func get_square_number(data):
+	var count = 0
+	for space in data["Square"]:
+		if space != "Empty":
+			count+= 1
+	return count
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -12,7 +12,9 @@ const RARE_BG_1 = preload("res://Game Assets/MngCardBG_Rre_00.png")
 const RARE_BG_2 = preload("res://Game Assets/MngCardBG_Rre_01.png")
 const FRESH_BG_1 = preload("res://Game Assets/MngCardBG_Frh_00.png")
 const FRESH_BG_2 = preload("res://Game Assets/MngCardBG_Frh_01.png")
-
+const COMMON_COST = preload("res://Game Assets/CardCost_00.png")
+const RARE_COST = preload("res://Game Assets/CardCost_01.png")
+const FRESH_COST = preload("res://Game Assets/CardCost_02.png")
 
 @export var id: int = 0 :
 	set(value):
@@ -28,21 +30,25 @@ func update():
 	print(card_name)
 	$Character.texture = load("res://minigame/card/" + data["Name"] + ".png")
 	$Name.text = card_name
+	$Cost.text = str(Data.get_square_number(data))
 	if data["Rarity"] == "Common":
-		$Background.texture = NORMAL_BG_1
-		$CommonText.show()
-		$RareText.hide()
-		$FreshText.hide()
+		$Background/Background.texture = NORMAL_BG_1
+		$Name/CommonText.show()
+		$Name/RareText.hide()
+		$Name/FreshText.hide()
+		$CardCost.texture = COMMON_COST
 	if data["Rarity"] == "Rare":
-		$Background.texture = RARE_BG_1
-		$CommonText.hide()
-		$RareText.show()
-		$FreshText.hide()
+		$Background/Background.texture = RARE_BG_1
+		$Name/CommonText.hide()
+		$Name/RareText.show()
+		$Name/FreshText.hide()
+		$CardCost.texture = RARE_COST		
 	if data["Rarity"] == "Fresh":
-		$Background.texture = FRESH_BG_1
-		$CommonText.hide()
-		$RareText.hide()
-		$FreshText.show()
+		$Background/Background.texture = FRESH_BG_1
+		$Name/CommonText.hide()
+		$Name/RareText.hide()
+		$Name/FreshText.show()
+		$CardCost.texture = FRESH_COST
 	pass
 
 #const OCTOLING_EDGES = preload("res://ui/VSPlayerIconOcta_00t.png")
