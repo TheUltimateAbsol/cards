@@ -6,6 +6,14 @@ var data:Dictionary = {}
 var card_name:String = ""
 var color
 
+const NORMAL_BG_1 = preload("res://Game Assets/MngCardBG_Cmn_00.png")
+const NORMAL_BG_2 = preload("res://Game Assets/MngCardBG_Cmn_01.png")
+const RARE_BG_1 = preload("res://Game Assets/MngCardBG_Rre_00.png")
+const RARE_BG_2 = preload("res://Game Assets/MngCardBG_Rre_01.png")
+const FRESH_BG_1 = preload("res://Game Assets/MngCardBG_Frh_00.png")
+const FRESH_BG_2 = preload("res://Game Assets/MngCardBG_Frh_01.png")
+
+
 @export var id: int = 0 :
 	set(value):
 		var toset = value
@@ -19,6 +27,22 @@ func update():
 	card_name = Data.get_card_name(data["Name"])
 	print(card_name)
 	$Character.texture = load("res://minigame/card/" + data["Name"] + ".png")
+	$Name.text = card_name
+	if data["Rarity"] == "Common":
+		$Background.texture = NORMAL_BG_1
+		$CommonText.show()
+		$RareText.hide()
+		$FreshText.hide()
+	if data["Rarity"] == "Rare":
+		$Background.texture = RARE_BG_1
+		$CommonText.hide()
+		$RareText.show()
+		$FreshText.hide()
+	if data["Rarity"] == "Fresh":
+		$Background.texture = FRESH_BG_1
+		$CommonText.hide()
+		$RareText.hide()
+		$FreshText.show()
 	pass
 
 #const OCTOLING_EDGES = preload("res://ui/VSPlayerIconOcta_00t.png")
