@@ -1,3 +1,6 @@
 [submodule "external/splat3"]
 	path = external/splat3
 	url = git@github.com:Leanny/splat3.git
+[submodule "external/splatoon3-fonts"]
+	path = external/splatoon3-fonts
+	url = git@github.com:North-West-Wind/splatoon3-fonts.git
